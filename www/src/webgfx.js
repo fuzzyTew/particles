@@ -117,7 +117,8 @@ function setStageDimensions(stage) {
 var lastRender = 0;
 function update(timestamp) {
 
-  var delta = Math.min(timestamp - lastRender, 500);
+  timestamp /= 1000.;
+  var delta = Math.min(timestamp - lastRender, .5);
   module.exports.update(delta, timestamp)
   lastRender = timestamp;
 
