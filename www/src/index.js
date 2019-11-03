@@ -51,15 +51,15 @@ class DemoParticle extends Particle { // todo remove type-based properties, add 
 		this.pos[0] = 0
 		this.pos[1] = 0
 		this.pos[2] = 0
-		this.vel[1] = 1
-		this.vel[0] = 0.2*(Math.random() - 0.5)
-		this.vel[2] = 0.2*(Math.random() - 0.5)
+		this.vel[1] = 0.5
+		this.vel[0] = 0.1*(Math.random() - 0.5)
+		this.vel[2] = 0.1*(Math.random() - 0.5)
 	}
 	update(s) {
 		this.pos[0] += s * this.vel[0]
 		this.pos[1] += s * this.vel[1]
 		this.pos[2] += s * this.vel[2]
-		this.vel[1] -= s * 0.5;
+		this.vel[1] -= s * 0.125;
 		return this.pos[1] >= 0
 	}
 }
@@ -72,7 +72,7 @@ var lastTime = 0
 gfx.update = function(delta, timestamp) {
   if (timestamp > lastTime && system.count < system.maxcount) {
     system.addParticle()
-    lastTime += 0.1
+    lastTime += 0.01
   }
   system.update(delta)
   // Apply rotation
